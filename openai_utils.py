@@ -12,7 +12,6 @@ from agent_config import (
     MAX_FILE_CHUNK_SIZE
 )
 
-# Instantiate the new OpenAI client
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 def call_with_retries(api_call_func, max_retries=5):

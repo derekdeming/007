@@ -50,7 +50,6 @@ def run_advanced_agent(github_repo_url: str):
     changed_files = []
     for filename, new_content in modifications.items():
         target_path = os.path.join(LOCAL_CLONE_PATH, filename)
-        # Ensure directories exist
         os.makedirs(os.path.dirname(target_path), exist_ok=True)
         try:
             with open(target_path, "w", encoding="utf-8") as wf:
@@ -69,10 +68,8 @@ def run_advanced_agent(github_repo_url: str):
 
 
 def main():
-    # Example immediate run:
     run_advanced_agent("https://github.com/derekdeming/graphs.git")
 
-    # Then schedule daily
     scheduler = BackgroundScheduler()
     scheduler.add_job(
         func=run_advanced_agent,

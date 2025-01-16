@@ -62,7 +62,7 @@ def multi_commit_push(file_paths, base_commit_msg, commits_count=5):
     try:
         repo = Repo(LOCAL_CLONE_PATH)
 
-        # Safety: check if commits_count is valid
+        # check if commits_count is valid
         if commits_count < 1:
             commits_count = 1
 
@@ -81,10 +81,8 @@ def multi_commit_push(file_paths, base_commit_msg, commits_count=5):
             # Push each chunk separately
             repo.remotes.origin.push()
             print(f"  --> Pushed chunk {commit_number} successfully.")
-
             start += chunk_size
             commit_number += 1
-
         return True
 
     except Exception as e:
